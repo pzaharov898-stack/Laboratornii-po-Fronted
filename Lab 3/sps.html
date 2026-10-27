@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru" class="sps-page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Технологическая заметка об интеграции через Kafka и RabbitMQ.">
+  <title>СПС: Kafka и RabbitMQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Roboto+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sps-page">
+  <header class="site-header">
+    <div id="logo" aria-label="Технологический раздел">SPS</div>
+    <div class="header-copy">
+      <p class="eyebrow">Инженерия сложных программных систем</p>
+      <h1>Асинхронная интеграция через Kafka и RabbitMQ</h1>
+      <p class="header-description">Кратко о брокерах сообщений и обмене данными между сервисами.</p>
+    </div>
+  </header>
+  <nav class="site-nav" aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="about.html">О себе</a>
+    <a href="friends.html">Друзья</a>
+    <a href="yvlechenie.html">Увлечения</a>
+    <a href="gruppa.html">Группа</a>
+    <a class="current" aria-current="page" href="sps.html">СПС</a>
+  </nav>
+  <main>
+    <section>
+      <h2>О теме</h2>
+      <p>В больших системах сервисы часто обмениваются данными друг с другом. Если один сервис ждёт ответа от другого, то при его сбое может остановиться вся цепочка. Чтобы снизить связанность сервисов, используют <strong class="important">брокеры сообщений</strong>: они передают сообщения между компонентами и позволяют отправителю и получателю работать независимо.</p>
+      <p>Для таких задач применяют, в частности, <em>Apache Kafka</em> и <em>RabbitMQ</em>.</p>
+      <p class="highlight">Асинхронный обмен помогает разделить отправку сообщения и его обработку, но требует продуманной обработки ошибок и повторных доставок.</p>
+    </section>
+    <article>
+      <h2>Где что используют</h2>
+      <table>
+        <thead><tr><th>Технология</th><th>Основное назначение</th><th>Особенность</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Apache Kafka</strong></td><td>Потоки событий и большие объёмы данных</td><td>Хранение событий в топиках и чтение потребителями</td></tr>
+          <tr><td><strong>RabbitMQ</strong></td><td>Очереди задач и маршрутизация сообщений</td><td>Гибкая доставка сообщений через очереди и обменники</td></tr>
+        </tbody>
+      </table>
+      <h3>Ключевые компоненты</h3>
+      <ul>
+        <li><strong>Producer</strong> — отправитель сообщения.</li>
+        <li><strong>Broker</strong> — посредник, принимающий и передающий сообщения.</li>
+        <li><strong>Consumer</strong> — получатель и обработчик сообщения.</li>
+        <li><strong>Queue / Topic</strong> — механизм организации и распределения сообщений.</li>
+      </ul>
+    </article>
+    <aside>
+      <h2>Что важно учесть в архитектуре</h2>
+      <p>При выборе технологии оценивают требования к пропускной способности, порядку обработки, сохранности сообщений, повторной доставке и наблюдаемости системы.</p>
+      <p><span class="tag">Надёжность</span><span class="tag">Масштабирование</span><span class="tag">Мониторинг</span></p>
+    </aside>
+  </main>
+  <footer class="site-footer"><p>Учебная страница по дисциплине «Введение во frontend-разработку».</p></footer>
+</body>
+</html>

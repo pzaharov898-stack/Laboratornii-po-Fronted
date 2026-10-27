@@ -1,0 +1,173 @@
+/* Лабораторная работа № 3. Единый внешний файл стилей для шести страниц. */
+:root {
+  /* Общая спокойная зелёно-серая цветовая схема сайта. */
+  --main: #526b52;
+  --main-dark: #394b39;
+  --page: #f5f5f0;
+  --card: #ffffff;
+  --text: #303830;
+  --border: #d7ddd2;
+  --highlight: #fff4c7;
+  --warning: #a12f2f;
+  --link: #315d86;
+  --link-visited: #67517d;
+}
+
+* { box-sizing: border-box; }
+html { font-size: 100%; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--page);
+  color: var(--text);
+  font-family: "Nunito Sans", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Шапка и уникальный логотип: идентификатор используется один раз на странице. */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 5%;
+  color: #fff;
+  background: var(--main);
+  border-bottom: 3px solid var(--main-dark);
+}
+#logo {
+  display: grid;
+  place-items: center;
+  flex: 0 0 3.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--main-dark);
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.header-copy { min-width: 0; }
+.eyebrow { margin: 0 0 .25rem; font-size: .85rem; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto Slab", Georgia, serif;
+  line-height: 1.25;
+}
+h1 { margin: 0; color: #fff; font-size: clamp(1.5rem, 3vw, 2.2rem); }
+.header-description { margin: .4rem 0 0; color: #f0f3ed; }
+
+/* Горизонтальное навигационное меню. */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .25rem;
+  padding: .6rem;
+  background: #e7eadf;
+  border-bottom: 1px solid var(--border);
+}
+.site-nav a {
+  padding: .5rem .85rem;
+  color: var(--main-dark);
+  text-decoration: none;
+  border-radius: .25rem;
+}
+.site-nav a:visited { color: var(--link-visited); }
+.site-nav a:hover {
+  color: #fff;
+  background: var(--main);
+  text-decoration: underline;
+}
+.site-nav a:active { color: #fff; background: var(--main-dark); }
+.site-nav a.current { color: #fff; background: var(--main-dark); }
+.site-nav a:focus-visible, a:focus-visible { outline: 2px solid #a46c18; outline-offset: 2px; }
+
+/* Основной блок и семантические области имеют собственные фоны и границы. */
+main {
+  flex: 1;
+  width: min(64rem, 92%);
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background: #eef0e9;
+  border: 1px solid #cbd2c4;
+  border-radius: .35rem;
+}
+section, article, aside {
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: .3rem;
+}
+section { background: #fff; border-left: 4px solid var(--main); }
+article { background: #f9faf6; border-top: 3px solid #aab7a2; }
+aside { background: #e9efe5; border-left: 4px solid #879b7b; }
+section:last-child, article:last-child, aside:last-child { margin-bottom: 0; }
+
+h2 { margin-top: 0; color: var(--main-dark); font-size: 1.5rem; }
+h3 { color: var(--main); font-size: 1.2rem; }
+h4 { color: #526b52; font-size: 1.1rem; }
+h5 { color: #5b6658; font-size: 1rem; }
+h6 { color: #6b7568; font-size: .9rem; }
+p { margin: 0 0 .8rem; text-align: justify; }
+p:last-child { margin-bottom: 0; }
+ul { padding-left: 1.4rem; list-style-type: square; }
+ol { padding-left: 1.4rem; }
+li { margin-bottom: .45rem; }
+li::marker { color: var(--main); }
+
+/* Псевдоклассы ссылок: обычная, посещённая, наведённая и активная. */
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+a:hover { color: var(--warning); text-decoration: underline; }
+a:active { color: #7d2424; }
+
+/* Классы для смыслового выделения текста. */
+.important { color: var(--warning); font-weight: 700; }
+.highlight { padding: .7rem; background: var(--highlight); border-left: 3px solid #c6a54b; }
+blockquote {
+  margin: 1rem 0 0;
+  padding: .8rem 1rem;
+  background: #f1f2ec;
+  border-left: 3px solid var(--main);
+  font-style: italic;
+}
+.hobby-list > li { padding-bottom: .7rem; }
+.hobby-image { display: block; width: min(100%, 20rem); height: auto; margin: .7rem 0; border: 1px solid var(--border); border-radius: .3rem; }
+.info-card { padding: .7rem; background: #f5f6f1; border: 1px solid var(--border); border-radius: .3rem; }
+.tag { display: inline-block; margin: .15rem; padding: .2rem .55rem; color: var(--main-dark); background: #e7eadf; border-radius: .25rem; font-size: .9rem; }
+
+/* Подвал визуально отличается от содержимого страницы. */
+.site-footer { margin-top: 1rem; padding: 1rem; color: #fff; text-align: center; background: var(--main-dark); border-top: 3px solid #879b7b; }
+.site-footer p { margin: .2rem 0; text-align: center; }
+
+/* Для страницы СПС применяется отдельная технологичная, но сдержанная палитра. */
+.sps-page {
+  --main: #49685d;
+  --main-dark: #2f4940;
+  --highlight: #e7f0e9;
+  --border: #cbd9d1;
+  --link: #285b58;
+}
+.sps-page .site-header { background: var(--main-dark); }
+.sps-page main { background: #eaf0ec; border-color: #b8cbc0; }
+.sps-page section { background: #fbfcfa; }
+.sps-page article { background: #f5f8f5; }
+.sps-page aside { background: var(--highlight); }
+.sps-page table { width: 100%; margin: 1rem 0; border-collapse: collapse; background: #fff; }
+.sps-page th, .sps-page td { padding: .65rem; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+.sps-page th { color: #fff; background: var(--main); }
+.sps-page tbody tr:nth-child(even) { background: #edf3ef; }
+
+@media (max-width: 600px) {
+  .site-header { align-items: flex-start; flex-direction: column; padding: 1.2rem 1rem; }
+  .site-nav { align-items: stretch; flex-direction: column; }
+  .site-nav a { text-align: center; }
+  main { width: 94%; margin: 1rem auto; padding: .65rem; }
+  section, article, aside { padding: .9rem; }
+  .sps-page th, .sps-page td { padding: .4rem; font-size: .9rem; }
+}
